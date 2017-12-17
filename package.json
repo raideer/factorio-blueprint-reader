@@ -3,11 +3,20 @@
     "version": "0.0.1",
     "description": "Library for reading, creating and manipulating factorio blueprint strings",
     "main": "src/index.js",
+    "author": "raideer",
     "scripts": {
         "lint": "eslint src",
         "build": "webpack"
     },
-    "author": "raideer",
+    "keywords": [
+        "factorio",
+        "blueprint",
+        "reader",
+        "library",
+        "blueprint string",
+        "decoder",
+        "encoder"
+    ],
     "license": "MIT",
     "devDependencies": {
         "babel-core": "^6.26.0",
@@ -16,5 +25,13 @@
         "babel-preset-env": "^1.6.1",
         "eslint": "^4.12.1",
         "webpack": "^3.10.0"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/raideer/factorio-blueprint-reader.git"
+    },
+    "bugs": {
+        "url": "https://github.com/raideer/factorio-blueprint-reader/issues"
+    },
+    "homepage": "https://github.com/raideer/factorio-blueprint-reader"
 }
