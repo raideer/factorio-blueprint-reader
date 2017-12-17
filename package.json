@@ -5,7 +5,7 @@
     "main": "src/index.js",
     "author": "raideer",
     "scripts": {
-        "lint": "eslint src",
+        "lint": "eslint ./src",
         "build": "webpack"
     },
     "keywords": [
