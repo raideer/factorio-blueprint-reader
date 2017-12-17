@@ -1,0 +1,20 @@
+{
+    "name": "factorio-blueprint-reader",
+    "version": "0.0.1",
+    "description": "Converts factorio blueprint string to an object",
+    "main": "src/index.js",
+    "scripts": {
+        "lint": "eslint src",
+        "build": "webpack"
+    },
+    "author": "raideer",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "eslint": "^4.12.1",
+        "webpack": "^3.10.0"
+    }
+}
