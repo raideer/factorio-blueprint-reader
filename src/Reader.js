@@ -6,10 +6,10 @@ class Reader {
     read(str, version) {
         const obj = Decoder.decode(str, version);
 
-        if (obj.hasOwnProperty('blueprint')) {
+        if ('blueprint' in obj) {
             const blueprint = new Blueprint(obj.blueprint);
             return new BlueprintBook(blueprint);
-        } else if (obj.hasOwnProperty('blueprint_book')) {
+        } else if ('blueprint_book' in obj) {
             const book = new BlueprintBook([], obj.blueprint_book);
 
             for (const blueprint of obj.blueprint_book.blueprints) {
