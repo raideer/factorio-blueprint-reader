@@ -1,10 +1,11 @@
 # Factorio blueprint reader
-**Factorio blueprint reader** is a library that can read, create and manipulate factorio blueprints. It runs both on node.js and browsers.
+**Factorio blueprint reader** is a library that can read, create and manipulate factorio blueprints. It works both on node.js and browser.
 
 ## Examples
 ```js
 const { Reader } = require('factorio-blueprint-reader');
 
+// Reader also accepts legacy blueprints (prior to 0.15)
 // To be consistent, Reader will always return a BlueprintBook
 const blueprintBook = Reader.read(`
 0eNqd0+FqwyAQAOB3ud8G1GZt5quMMUx7G4Ia8exoCHn3mqSUQV3b9Jeo5+cdxw3Q2iOGaHwCNYDZd55AfQxA5sdrO52lPiAoMAkdMPDaTTs8hYhEVYraU+hiqlq0CUYGxh/wBEqMnwzQJ5MMLuK86b/80bUYc8DVIqetrax2Ifuho/yk89PPmalyWJ8XOY7shpBPEfeEzaOCbhOSM8dLWv2qJkra23pNXDQGBxNxv1xtC/b2an9rSg9h/n/Nu9VZFpOUBbpZTfNn639fTd9pu+AvarnteUjmwVJ/5pDBL0Zacq9ruRMb3jT55zPpqj52
