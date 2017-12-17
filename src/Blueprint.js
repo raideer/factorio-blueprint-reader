@@ -20,11 +20,19 @@ module.exports = class Blueprint {
         }
     }
 
-    rawIngredients(expensive = false) {
+    ingredients(expensive = false) {
         return this.entities.reduce((accumulator, entity) => {
             const ingredients = entity.ingredientsRaw(expensive);
             return ingredients ? sumObjects(accumulator, ingredients) : accumulator;
         }, {});
+    }
+
+    forEach(callback, thisarg = null) {
+        for (let i = 0; i < this.entities.length; i++) {
+            if (i in this.entities) {
+                callback.call(thisarg, this.entities[i], i);
+            }
+        }
     }
 
     /**
