@@ -1,7 +1,7 @@
 {
     "name": "factorio-blueprint-reader",
     "version": "0.0.1",
-    "description": "Converts factorio blueprint string to an object",
+    "description": "Library for reading, creating and manipulating factorio blueprint strings",
     "main": "src/index.js",
     "scripts": {
         "lint": "eslint src",
