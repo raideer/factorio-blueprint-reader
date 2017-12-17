@@ -1,4 +1,5 @@
 const Entity = require('./Entity');
+const Grid = require('./Grid');
 const { sumObjects } = require('./Utils');
 
 module.exports = class Blueprint {
@@ -10,6 +11,15 @@ module.exports = class Blueprint {
         });
         this.icons = blueprint.icons;
         this.version = blueprint.version;
+        this._grid = null;
+    }
+
+    grid() {
+        if (!this._grid) {
+            this._grid = new Grid(this);
+        }
+
+        return this._grid;
     }
 
     setBook(book) {
@@ -33,6 +43,14 @@ module.exports = class Blueprint {
                 callback.call(thisarg, this.entities[i], i);
             }
         }
+    }
+
+    first() {
+        return this.entities[0];
+    }
+
+    last() {
+        return this.entities[this.entities.length - 1];
     }
 
     /**
