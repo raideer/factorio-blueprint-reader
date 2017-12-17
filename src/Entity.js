@@ -1,6 +1,7 @@
 const raw = require('../data.json');
 const utils = require('./Utils');
 const Recipe = require('./Recipe');
+const { direction } = require('./types');
 
 module.exports = class Entity {
     constructor(data, blueprint) {
@@ -16,8 +17,8 @@ module.exports = class Entity {
         this.direction = data.direction || 0;
 
         const rawData = raw[this.name] || {};
-        this.selection_box = rawData.selection_box || [0, 0];
-        this.collision_box = rawData.collision_box || [0, 0];
+        this.selection_box = rawData.selection_box || [[0, 0], [0, 0]];
+        this.collision_box = rawData.collision_box || [[0, 0], [0, 0]];
         this.icon = raw[this.name].icon || '';
         this.type = raw[this.name].type || 'unknown';
     }
@@ -38,12 +39,48 @@ module.exports = class Entity {
         return Recipe.getRawIngredients(this.name, expensive);
     }
 
-    width() {
-        return Math.abs(this.selection_box[0][1]) + Math.abs(this.selection_box[1][1]);
+    /**
+     * Returns either selection or collision bounds of this entity
+     * @param {boolean} collision Returns collision bounds if true
+     */
+    bounds(collision = false) {
+        const bounds = {
+            left: this.position.x - (this.width(collision) / 2),
+            right: this.position.x + (this.width(collision) / 2),
+            top: this.position.y - (this.height(collision) / 2),
+            bottom: this.position.y + (this.height(collision) / 2)
+        };
+
+        if (this.direction !== direction.NORTH && this.direction !== direction.SOUTH) {
+            const clone = Object.assign({}, bounds);
+
+            if (this.direction === direction.EAST || this.direction === direction.WEST) {
+                bounds.left = clone.top;
+                bounds.right = clone.bottom;
+                bounds.top = clone.right;
+                bounds.bottom = clone.left;
+            }
+        }
+        
+        return bounds;
+    }
+    
+    /**
+     * Returns the width of selection or collision box
+     * @param {boolean} collision Returns collision box width if true
+     */
+    width(collision = false) {
+        const box = collision ? this.collision_box : this.selection_box;
+        return Math.abs(box[0][1]) + Math.abs(box[1][1]);
     }
 
-    height() {
-        return Math.abs(this.selection_box[0][0]) + Math.abs(this.selection_box[1][0]);
+    /**
+     * Returns the height of selection or collision box
+     * @param {boolean} collision Returns collision box width if true
+     */
+    height(collision = false) {
+        const box = collision ? this.collision_box : this.selection_box;
+        return Math.abs(box[0][0]) + Math.abs(box[1][0]);
     }
 
     hasCollision() {
