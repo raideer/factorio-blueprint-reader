@@ -11,7 +11,7 @@ module.exports = class Entity {
         } else {
             this.name = data.name;
         }
-        
+
         this.position = data.position;
         this.direction = data.direction || 0;
 
@@ -37,7 +37,7 @@ module.exports = class Entity {
     ingredientsRaw(expensive = false) {
         return Recipe.getRawIngredients(this.name, expensive);
     }
-    
+
     width() {
         return Math.abs(this.selection_box[0][1]) + Math.abs(this.selection_box[1][1]);
     }
