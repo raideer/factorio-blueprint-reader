@@ -4,5 +4,6 @@ module.exports = {
     BlueprintBook: require('./BlueprintBook'),
     Decoder: require('./Decoder'),
     Entity: require('./Entity'),
-    Recipe: require('./Recipe')
+    Recipe: require('./Recipe'),
+    Grid: require('./Grid')
 };
