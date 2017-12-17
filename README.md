@@ -48,6 +48,14 @@ console.log(
 )
 
 ```
+## Using in browser
+If you're planning on using factorio blueprint reader in browser, all neccessary classes will be available under `FBR` variable.
+```js
+    var Recipe = FBR.Recipe;
+    var Reader = FBR.Reader;
+    // etc ...
+```
+
 
 ## Installation
 This library will be published on npm when the first stable version gets released. *(soon tm)*
