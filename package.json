@@ -6,7 +6,8 @@
     "author": "raideer",
     "scripts": {
         "lint": "eslint ./src",
-        "build": "webpack"
+        "build": "webpack",
+        "watch": "webpack --watch"
     },
     "keywords": [
         "factorio",
