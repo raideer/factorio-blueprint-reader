@@ -16,11 +16,14 @@ module.exports = class Entity {
         this.position = data.position;
         this.direction = data.direction || 0;
 
-        const rawData = raw[this.name] || {};
-        this.selection_box = rawData.selection_box || [[0, 0], [0, 0]];
-        this.collision_box = rawData.collision_box || [[0, 0], [0, 0]];
-        this.icon = raw[this.name].icon || '';
-        this.type = raw[this.name].type || 'unknown';
+        this.selection_box = this.data.selection_box || [[0, 0], [0, 0]];
+        this.collision_box = this.data.collision_box || [[0, 0], [0, 0]];
+        this.icon = this.data.icon || '';
+        this.type = this.data.type || 'unknown';
+    }
+
+    get data() {
+        return raw[this.name] || {};
     }
 
     setSize(width, height) {
