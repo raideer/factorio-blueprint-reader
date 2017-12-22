@@ -34,11 +34,11 @@ module.exports = class Entity {
         return this;
     }
 
-    ingredients(expensive = false) {
+    getIngredients(expensive = false) {
         return Recipe.getIngredients(this.name, expensive);
     }
 
-    ingredientsRaw(expensive = false) {
+    getRawIngredients(expensive = false) {
         return Recipe.getRawIngredients(this.name, expensive);
     }
 
@@ -46,12 +46,12 @@ module.exports = class Entity {
      * Returns either selection or collision bounds of this entity
      * @param {boolean} collision Returns collision bounds if true
      */
-    bounds(collision = false) {
+    getBounds(collision = false) {
         const bounds = {
-            left: this.position.x - (this.width(collision) / 2),
-            right: this.position.x + (this.width(collision) / 2),
-            top: this.position.y - (this.height(collision) / 2),
-            bottom: this.position.y + (this.height(collision) / 2)
+            left: this.position.x - (this.getWidth(collision) / 2),
+            right: this.position.x + (this.getWidth(collision) / 2),
+            top: this.position.y - (this.getHeight(collision) / 2),
+            bottom: this.position.y + (this.getHeight(collision) / 2)
         };
 
         if (this.direction !== direction.NORTH && this.direction !== direction.SOUTH) {
@@ -67,23 +67,35 @@ module.exports = class Entity {
         
         return bounds;
     }
+
+    get bounds() {
+        return this.getBounds();
+    }
     
     /**
      * Returns the width of selection or collision box
      * @param {boolean} collision Returns collision box width if true
      */
-    width(collision = false) {
+    getWidth(collision = false) {
         const box = collision ? this.collision_box : this.selection_box;
         return Math.abs(box[0][1]) + Math.abs(box[1][1]);
+    }
+
+    get width() {
+        return this.getWidth();
     }
 
     /**
      * Returns the height of selection or collision box
      * @param {boolean} collision Returns collision box width if true
      */
-    height(collision = false) {
+    getHeight(collision = false) {
         const box = collision ? this.collision_box : this.selection_box;
         return Math.abs(box[0][0]) + Math.abs(box[1][0]);
+    }
+
+    get height() {
+        return this.getHeight();
     }
 
     hasCollision() {

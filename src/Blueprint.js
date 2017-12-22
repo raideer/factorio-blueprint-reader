@@ -14,7 +14,7 @@ module.exports = class Blueprint {
         this._grid = null;
     }
 
-    grid() {
+    getGrid() {
         if (!this._grid) {
             this._grid = new Grid(this);
         }
@@ -30,9 +30,9 @@ module.exports = class Blueprint {
         }
     }
 
-    ingredients(expensive = false) {
+    getIngredients(expensive = false) {
         return this.entities.reduce((accumulator, entity) => {
-            const ingredients = entity.ingredientsRaw(expensive);
+            const ingredients = entity.getRawIngredients(expensive);
             return ingredients ? sumObjects(accumulator, ingredients) : accumulator;
         }, {});
     }
@@ -57,7 +57,7 @@ module.exports = class Blueprint {
      * Returns an object of required item count
      * @return {Object}
      */
-    requirements() {
+    getRequirements() {
         return this.entities.reduce((accumulator, entity) => {
             if (!accumulator[entity.name]) {
                 accumulator[entity.name] = 0;

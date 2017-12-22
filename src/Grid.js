@@ -1,3 +1,5 @@
+const utils = require('./Utils');
+
 module.exports = class Grid {
     constructor(blueprint = null) {
         this.placedEntities = [];
@@ -11,7 +13,7 @@ module.exports = class Grid {
 
     placeEntity(entity) {
         const overlaps = this.placedEntities.reduce((overlapping, placed) => {
-            if (this.areOverlapping(placed.bounds(), entity.bounds())) {
+            if (utils.areOverlapping(placed.bounds, entity.bounds)) {
                 overlapping.push(placed);
             }
 
@@ -30,17 +32,4 @@ module.exports = class Grid {
 
         this.placedEntities.push(entity);
     }
-
-    areOverlapping(boundsA, boundsB) {
-        if (
-            boundsA.left >= boundsB.right
-            || boundsA.bottom >= boundsB.top
-            || boundsB.left >= boundsA.right
-            || boundsB.bottom >= boundsA.top
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-}
+};

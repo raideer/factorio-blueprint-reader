@@ -15,5 +15,18 @@ module.exports = {
         for (const i in obj) {
             callback.call(thisarg, obj[i], i);
         }
+    },
+
+    areOverlapping(boundsA, boundsB) {
+        if (
+            boundsA.left >= boundsB.right
+            || boundsA.bottom >= boundsB.top
+            || boundsB.left >= boundsA.right
+            || boundsB.bottom >= boundsA.top
+        ) {
+            return false;
+        }
+
+        return true;
     }
 };
