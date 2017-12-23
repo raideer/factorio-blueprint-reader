@@ -4,17 +4,17 @@ const Recipe = require('./Recipe');
 const { direction } = require('./types');
 
 module.exports = class Entity {
-    constructor(data, blueprint) {
+    constructor(entity, blueprint) {
         this.blueprint = blueprint;
 
-        if (data.name === 'straight-rail') {
+        if (entity.name === 'straight-rail') {
             this.name = 'rail';
         } else {
-            this.name = data.name;
+            this.name = entity.name;
         }
 
-        this.position = data.position;
-        this.direction = data.direction || 0;
+        this.position = entity.position;
+        this.direction = entity.direction || 0;
 
         this.selection_box = this.data.selection_box || [[0, 0], [0, 0]];
         this.collision_box = this.data.collision_box || [[0, 0], [0, 0]];
