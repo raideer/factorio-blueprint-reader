@@ -1,6 +1,6 @@
 {
     "name": "factorio-blueprint-reader",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Library for reading, creating and manipulating factorio blueprint strings",
     "main": "src/index.js",
     "author": "raideer",
