@@ -2,7 +2,7 @@ module.exports = {
     round: (number, precision = 1) => {
         return Math.round(number * precision) / precision;
     },
-    
+
     sumObjects(a, b) {
         return Object.keys(a).concat(Object.keys(b))
         .reduce((obj, k) => {
