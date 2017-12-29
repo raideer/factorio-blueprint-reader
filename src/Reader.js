@@ -18,7 +18,6 @@ class Reader {
             obj.blueprint_book.blueprints.forEach(blueprint => {
                 blueprintBook.add(new Blueprint(blueprint.blueprint));
             });
-
         }
 
         return blueprintBook;
