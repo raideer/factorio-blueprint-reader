@@ -66,7 +66,7 @@ class Decoder {
 
     _luaToJson(str) {
         // Remove all linebreaks
-        // str = str.replace(/\r?\n|\r/g, '');
+        str = str.replace(/\r?\n|\r/g, '');
         // Remove whitespace
         str = str.replace(/\s+/g, '');
         // Swap eaqual signs with colons
