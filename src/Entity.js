@@ -4,7 +4,7 @@ const Recipe = require('./Recipe');
 const { direction } = require('./types');
 
 module.exports = class Entity {
-    constructor(entity, blueprint) {
+    constructor(entity, blueprint = null) {
         this.blueprint = blueprint;
 
         if (entity.name === 'straight-rail') {
@@ -64,14 +64,14 @@ module.exports = class Entity {
                 bounds.bottom = clone.left;
             }
         }
-        
+
         return bounds;
     }
 
     get bounds() {
         return this.getBounds();
     }
-    
+
     /**
      * Returns the width of selection or collision box
      * @param {boolean} collision Returns collision box width if true
