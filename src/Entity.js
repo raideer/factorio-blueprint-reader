@@ -1,4 +1,4 @@
-const raw = require('../data.json');
+const raw = require('../recipes.json');
 const utils = require('./Utils');
 const Recipe = require('./Recipe');
 const { direction } = require('./types');

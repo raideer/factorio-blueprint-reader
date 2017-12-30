@@ -1,4 +1,4 @@
-const raw = require('../data.json');
+const raw = require('../recipes.json');
 
 class Recipe {
     /**
