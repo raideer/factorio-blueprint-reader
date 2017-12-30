@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: ['babel-polyfill', './src/index.js'],
+    entry: ['./src/index.js'],
     output: {
         filename: 'factorio-blueprint-reader.js',
         path: path.resolve('dist'),
